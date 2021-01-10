@@ -11,4 +11,10 @@ class PostController extends Controller
         $posts = Post::where('status', 2)->latest('id')->paginate(5);
         return view('posts.index', compact('posts'));
     }
+
+    public function show(Post $post) {
+        $similar = Post::where('category_id', $post->category_id)->where('status', 2)->where('id', '!=', $post->id)->latest('id')->take(4)->get();
+
+        return view('posts.show', compact('post', 'similar'));
+    }
 }
