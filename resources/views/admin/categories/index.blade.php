@@ -7,8 +7,12 @@
 @stop
 
 @section('content')
+    @if (session('info'))
+        <div class="alert alert-success">
+            <strong>{{ session('info') }}</strong>
+        </div>
+    @endif
     <p>Aquí se listan categorías.</p>
-
     <div class="card">
         <div class="card-header">
             <a class="btn btn-success" href="{{ route('admin.categories.create') }}">Agregar categoría</a>
