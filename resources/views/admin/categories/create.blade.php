@@ -22,8 +22,8 @@
                     {!! Form::label('slug', 'Slug') !!}
                     {!! Form::text('slug', null, ['class' => 'form-control', 'placeholder' => 'Ingrese nombre de la categoría', 'readonly']) !!}
                     @error('slug')
-                    <span class="text-danger">{{ $message }}</span>
-                @enderror
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 {!! Form::submit('Crear categoría', ['class' => 'btn btn-primary']) !!}    
             {!! Form::close() !!}
