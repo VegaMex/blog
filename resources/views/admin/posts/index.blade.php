@@ -3,7 +3,7 @@
 @section('title', 'Dashboard')
 
 @section('content_header')
-    <a class="btn btn-success float-right" href="{{ route('admin.tags.create') }}">Agregar etiqueta</a>
+    <a class="btn btn-success float-right" href="{{ route('admin.posts.create') }}">Agregar post</a>
     <h1>Lista de posts</h1>
 @stop
 
