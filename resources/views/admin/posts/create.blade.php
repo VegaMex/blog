@@ -10,7 +10,7 @@
     <p>Aquí se crean posts.</p>
     <div class="card">
         <div class="card-body">
-            {!! Form::open([ 'route' => 'admin.posts.store', 'autocomplete' => 'off']) !!}
+            {!! Form::open([ 'route' => 'admin.posts.store', 'autocomplete' => 'off', 'files' => true]) !!}
                 {!! Form::hidden('user_id', auth()->user()->id) !!}
                 <div class="form-group">
                     {!! Form::label('name', 'Nombre') !!}
@@ -60,6 +60,23 @@
                         Publicado
                     </label>                    
                 </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <div class="image-wrapper">
+                            <img id="picture" src="https://cdn.pixabay.com/photo/2014/06/24/00/14/spanish-375830_960_720.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            {!! Form::label('file', 'Imagen del post') !!}
+                            {!! Form::file('file', ['class' => 'form-control-file', 'accept' => 'image/*']) !!}
+                            @error('file')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit non similique expedita quod, quisquam, praesentium mollitia sint nostrum accusamus, eaque itaque autem sequi dolor ad deleniti. Dignissimos blanditiis aut ut?</p>
+                    </div>
+                </div>
                 <div class="form-group">
                     {!! Form::label('extract', 'Extracto') !!}
                     {!! Form::textarea('extract', null, ['class' => 'form-control']) !!}
@@ -79,6 +96,21 @@
         </div>
     </div>
 @stop
+
+@section('css')
+    <style>
+        .image-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+        }
+        .image-wrapper img {
+            position: absolute;
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+@endsection
 
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
@@ -101,6 +133,18 @@
             .create( document.querySelector( '#body' ) )
             .catch( error => {
                 console.error( error );
-        } );            
+        } );
+
+        document.getElementById("file").addEventListener('change', cambiarImagen);
+
+        function cambiarImagen(event){
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById("picture").setAttribute('src', event.target.result); 
+            };
+
+            reader.readAsDataURL(file);
+        }
     </script>
 @endsection
