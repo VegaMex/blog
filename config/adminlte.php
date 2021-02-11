@@ -240,6 +240,12 @@ return [
             'icon'        => 'fas fa-fw fa-tachometer-alt',
             'label_color' => 'success',
         ],
+        [
+            'text'        => 'Usuarios',
+            'route'         => 'admin.users.index',
+            'icon'        => 'fas fa-fw fa-users',
+            'label_color' => 'success',
+        ],
         ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Categorías',
