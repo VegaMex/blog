@@ -248,6 +248,13 @@ return [
             'label_color' => 'success',
             'can'         => 'admin.users.index',
         ],
+        [
+            'text'        => 'Lista de roles',
+            'route'         => 'admin.roles.index',
+            'icon'        => 'fas fa-fw fa-users-cog',
+            'label_color' => 'success',
+            // 'can'         => 'admin.users.index',
+        ],
         ['header' => 'ADMINISTRADOR'],
         [
             'text' => 'Categorías',
